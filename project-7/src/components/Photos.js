@@ -2,10 +2,13 @@ import React from 'react';
 
 //Stateless
 
-const Photos = props => (
+const Photos = ({photo}) => {
+    console.log({photo});
+    return (
         <li>
-            <img src={`https://farm${props.farm}.staticflickr.com/${props.server}/${props.id}_${props.secret}_m.jpg`} alt="" />
+            <img src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_m.jpg`} alt={photo.title} />
         </li>
-);
+    )
+}
 
 export default Photos;

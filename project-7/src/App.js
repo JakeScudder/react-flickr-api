@@ -16,7 +16,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      gifs: []
+      photos: []
     };
   }
 
@@ -24,7 +24,7 @@ class App extends Component {
     axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=nebula&per_page=24&format=json&nojsoncallback=1`)
   .then(response => {
     this.setState({
-      gifs: response.data.photos.photo
+      photos: response.data.photos.photo
     });
   })
   .catch(error => {
@@ -38,7 +38,7 @@ class App extends Component {
       <div className="container">
         <SearchForm />
         <Nav />
-        <PhotoContainer data={this.state.gifs} />
+        <PhotoContainer data={this.state.photos} />
       </div>
     </BrowserRouter>
     )
