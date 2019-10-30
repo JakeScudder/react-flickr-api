@@ -1,13 +1,14 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 //Stateless
 
 const Nav = () => (
+    
     <nav className="main-nav">
         <ul>
-            <li><a href='#'>Lions</a></li>
-            <li><a href='#'>Tigers</a></li>
-            <li><a href='#'>Bears</a></li>
+            <li><Link to='/birds'>Birds</Link></li>
+            <li><Link to='/bees'>Bees</Link></li>
+            <li><Link to='/butterflies'>Butterflies</Link></li>
         </ul>
     </nav>
 );
