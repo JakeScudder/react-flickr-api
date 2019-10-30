@@ -3,7 +3,8 @@ import axios from 'axios';
 import apiKey from './config';
 import {
   BrowserRouter,
-  Route
+  Route,
+  Redirect
 } from 'react-router-dom';
 
 //App components
@@ -21,7 +22,7 @@ class App extends Component {
       bees: [],
       butterflies: [],
       birds: [],
-      search: []
+      search:[]
     };
   }
 
@@ -42,13 +43,28 @@ class App extends Component {
     })
   }
 
-  
+  handleSearch = (searchArray) => {
+    //console.log(searchArray);
+    this.setState({
+      search: searchArray
+    })
+    console.log(this.state.search);
+    if(this.state.search.length > 0) {
+      return <Redirect to='/search' />
+    }
+    else {
+      console.log('Not Found')
+    }
+  }
+
 
   render() {
     return(
     <BrowserRouter>
       <div className="container">
-        <SearchForm />
+        <SearchForm 
+          addSearchState={this.handleSearch}
+        />
         <Nav />
         <Route 
           exact path="/" 
@@ -67,7 +83,7 @@ class App extends Component {
           render={(props) => <PhotoContainer {...props} data={this.state.birds} /> }
         />
         <Route 
-          path="/search/:input" 
+          path="/search" 
           render={(props) => <PhotoContainer {...props} data={this.state.search} /> }
         />
       </div>

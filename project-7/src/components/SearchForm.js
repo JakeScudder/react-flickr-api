@@ -1,22 +1,30 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import apiKey from '../config';
+
+
 //Stateful
 
 class SearchForm extends Component {
 
+    state= {
+        search: []
+    }
     //Handles search form requests
     handleSubmit = (e) => {
+        console.log('submit');
         e.preventDefault();
         let input = this.search.value;
-        let path = `search/${input}`;
-        this.props.history.push(path);
 
         axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${input}&per_page=24&format=json&nojsoncallback=1`)
         .then(response => {
-          this.setState({
-            search: response.data.photos.photo
+            this.setState({
+              search: response.data.photos.photo
+            })
           })
+        .then(() => {
+            //console.log(this.state.search);
+            this.props.addSearchState(this.state.search)
         })
         .catch(error => {
           console.log("We couldn't find what you searched for.", error)
@@ -24,6 +32,9 @@ class SearchForm extends Component {
     }
 
     render() {
+        //Debugging
+        //const { match, location, history } = this.props;
+
         return (
             <form onSubmit={this.handleSubmit} className="search-form">
                 <input type="search" name="search" placeholder="Search" ref={ (input) => this.search = input } required/>
@@ -37,6 +48,8 @@ class SearchForm extends Component {
         )
     }   
 }   
+
+
 
 export default SearchForm;
 
