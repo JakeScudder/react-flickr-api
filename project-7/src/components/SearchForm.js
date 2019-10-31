@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import apiKey from '../config';
-
-
 //Stateful
 
 class SearchForm extends Component {
@@ -18,6 +16,7 @@ class SearchForm extends Component {
 
         axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${input}&per_page=24&format=json&nojsoncallback=1`)
         .then(response => {
+            console.log(response)
             this.setState({
               search: response.data.photos.photo
             })
@@ -29,6 +28,7 @@ class SearchForm extends Component {
         .catch(error => {
           console.log("We couldn't find what you searched for.", error)
         })
+
     }
 
     render() {

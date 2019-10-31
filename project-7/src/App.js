@@ -4,7 +4,7 @@ import apiKey from './config';
 import {
   BrowserRouter,
   Route,
-  Redirect
+  Link
 } from 'react-router-dom';
 
 //App components
@@ -50,7 +50,8 @@ class App extends Component {
     })
     console.log(this.state.search);
     if(this.state.search.length > 0) {
-      return <Redirect to='/search' />
+      console.log('in redirect')
+      return <Link to='/search' />
     }
     else {
       console.log('Not Found')
