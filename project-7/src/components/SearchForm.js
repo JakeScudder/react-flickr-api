@@ -17,15 +17,16 @@ class SearchForm extends Component {
 		e.preventDefault();
 		let input = this.search.value;
 		this.props.history.push(input);
+    this.props.resetSearchState();
 
 		axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${input}&per_page=24&format=json&nojsoncallback=1`)
 		.then(response => {
 			console.log(response)
 			this.setState({
-				search: response.data.photos.photo
+        search: response.data.photos.photo
 			})
 		})
-		.then(() => {
+    .then(() => {
 			this.props.addSearchState(this.state.search)
 		})
 		.catch(error => {

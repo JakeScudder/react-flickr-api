@@ -11,10 +11,11 @@ import {
 import SearchForm from './components/SearchForm';
 import Nav from './components/Nav';
 import PhotoContainer from './components/PhotoContainer';
+import ErrorPage from './components/ErrorPage';
 
 class App extends Component {
 
-  //Set state for home page, nav links, and search form
+  //Set state for home page, nav links, and search form. Also loading indicators.
   constructor() {
     super();
     this.state = {
@@ -29,9 +30,8 @@ class App extends Component {
   }
 
   //Initial get request for home page and 3 nav links
-
   componentDidMount() {
-    Promise.all([axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=wildflowers&per_page=24&format=json&nojsoncallback=1`), axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=butterflies&per_page=24&format=json&nojsoncallback=1`), axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=bees&per_page=24&format=json&nojsoncallback=1`), axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=birds&per_page=24&format=json&nojsoncallback=1`)])
+    Promise.all([axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=buttercups&per_page=24&format=json&nojsoncallback=1`), axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=butterflies&per_page=24&format=json&nojsoncallback=1`), axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=bees&per_page=24&format=json&nojsoncallback=1`), axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=birds&per_page=24&format=json&nojsoncallback=1`)])
     .then(([res1, res2, res3, res4]) => {
       this.setState({
         photos: res1.data.photos.photo,
@@ -61,17 +61,24 @@ class App extends Component {
     }
   }
 
+  //resets Search State
+  resetState = () => {
+    this.setState({
+      searchLoad: true,
+    })
+  }
 
+  //Renders the main page
   render() {
     return(
     <BrowserRouter>
       <div className="container">
         <SearchForm 
           addSearchState={this.handleSearch}
+          resetSearchState={this.resetState}
         />
         <Nav />
 
-        
         <Switch>
           {/* Loading State indicator on intial page load*/}
           {
@@ -95,6 +102,7 @@ class App extends Component {
             path="/birds" 
             render={(props) => <PhotoContainer {...props} data={this.state.birds} /> }
           />
+          
           {/* Loading State indicator so Not Found won't display unless search has been returned */}
           {
           (this.state.searchLoad)
@@ -105,6 +113,8 @@ class App extends Component {
             render={(props) => <PhotoContainer {...props} data={this.state.search} /> }
             />
           }
+          <Route component={ErrorPage}/>
+          
         </Switch>
         
       </div>
