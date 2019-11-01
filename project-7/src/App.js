@@ -3,8 +3,7 @@ import axios from 'axios';
 import apiKey from './config';
 import {
   BrowserRouter,
-  Route,
-  Redirect
+  Route
 } from 'react-router-dom';
 
 //App components
@@ -50,7 +49,7 @@ class App extends Component {
     console.log(this.state.search);
     if(this.state.search.length > 0) {
       console.log('in redirect')
-      return <Redirect to='/search' />
+      return 
     }
     else {
       console.log('Not Found')
@@ -83,7 +82,7 @@ class App extends Component {
           render={(props) => <PhotoContainer {...props} data={this.state.birds} /> }
         />
         <Route 
-          path="/search" 
+          path="/:input" 
           render={(props) => <PhotoContainer {...props} data={this.state.search} /> }
         />
       </div>
