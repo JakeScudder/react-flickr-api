@@ -3,7 +3,8 @@ import axios from 'axios';
 import apiKey from './config';
 import {
   BrowserRouter,
-  Route
+  Route,
+  Switch
 } from 'react-router-dom';
 
 //App components
@@ -21,7 +22,9 @@ class App extends Component {
       bees: [],
       butterflies: [],
       birds: [],
-      search:[]
+      search:[],
+      loading: true,
+      searchLoad: true
     };
   }
 
@@ -35,6 +38,7 @@ class App extends Component {
         butterflies: res2.data.photos.photo,
         bees: res3.data.photos.photo,
         birds: res4.data.photos.photo,
+        loading: false
       });
     })
     .catch(error => {
@@ -42,13 +46,14 @@ class App extends Component {
     })
   }
 
+  //Handles search by setting search array to search state
   handleSearch = (searchArray) => {
     this.setState({
-      search: searchArray
+      search: searchArray,
+      searchLoad: false
     })
-    console.log(this.state.search);
     if(this.state.search.length > 0) {
-      console.log('in redirect')
+      console.log('Photos Available')
       return 
     }
     else {
@@ -65,31 +70,47 @@ class App extends Component {
           addSearchState={this.handleSearch}
         />
         <Nav />
-        <Route 
-          exact path="/" 
-          render={(props) => <PhotoContainer {...props} data={this.state.photos} /> }
-        />
-        <Route 
-          path="/butterflies" 
-          render={(props) => <PhotoContainer {...props} data={this.state.butterflies} /> }
-        />
-        <Route 
-          path="/bees" 
-          render={(props) => <PhotoContainer {...props} data={this.state.bees} /> }
-        />
-        <Route 
-          exact path="/birds" 
-          render={(props) => <PhotoContainer {...props} data={this.state.birds} /> }
-        />
-        <Route 
-          path="/:input" 
-          render={(props) => <PhotoContainer {...props} data={this.state.search} /> }
-        />
+
+        
+        <Switch>
+          {/* Loading State indicator on intial page load*/}
+          {
+          (this.state.loading)
+          ? <p>Loading...</p>
+          : 
+          <Route 
+            exact path="/" 
+            render={(props) => <PhotoContainer {...props} data={this.state.photos} /> }
+          />
+          }
+          <Route 
+            path="/butterflies" 
+            render={(props) => <PhotoContainer {...props} data={this.state.butterflies} /> }
+          />
+          <Route 
+            path="/bees" 
+            render={(props) => <PhotoContainer {...props} data={this.state.bees} /> }
+          />
+          <Route 
+            path="/birds" 
+            render={(props) => <PhotoContainer {...props} data={this.state.birds} /> }
+          />
+          {/* Loading State indicator so Not Found won't display unless search has been returned */}
+          {
+          (this.state.searchLoad)
+          ? <p>Loading...</p>
+          : 
+          <Route 
+            path="/:input" 
+            render={(props) => <PhotoContainer {...props} data={this.state.search} /> }
+            />
+          }
+        </Switch>
+        
       </div>
     </BrowserRouter>
     )
   }
-
 }
 
 export default App;
