@@ -16,7 +16,8 @@ class SearchForm extends Component {
 		console.log('submit');
 		e.preventDefault();
 		let input = this.search.value;
-		this.props.history.push(input);
+		let searchUrl = `/search/${input}`;
+		this.props.history.push(searchUrl);
     this.props.resetSearchState();
 
 		axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${input}&per_page=24&format=json&nojsoncallback=1`)

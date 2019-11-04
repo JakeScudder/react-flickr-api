@@ -91,15 +91,15 @@ class App extends Component {
           />
           }
           <Route 
-            path="/butterflies" 
+            exact path="/butterflies" 
             render={(props) => <PhotoContainer {...props} data={this.state.butterflies} /> }
           />
           <Route 
-            path="/bees" 
+            exact path="/bees" 
             render={(props) => <PhotoContainer {...props} data={this.state.bees} /> }
           />
           <Route 
-            path="/birds" 
+            exact path="/birds" 
             render={(props) => <PhotoContainer {...props} data={this.state.birds} /> }
           />
           
@@ -109,7 +109,7 @@ class App extends Component {
           ? <p>Loading...</p>
           : 
           <Route 
-            path="/:input" 
+            exact path="/search/:input" 
             render={(props) => <PhotoContainer {...props} data={this.state.search} /> }
             />
           }
