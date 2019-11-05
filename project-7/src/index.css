@@ -4,6 +4,10 @@ body {
   color: #3f4850;
 }
 
+div#root {
+  background-color: #3b7b20c7
+}
+
 h2 {
   font-size: 2em;
   margin: 52px 0 40px;
@@ -26,6 +30,7 @@ a {
 }
 
 .search-form button {
+  margin-top: 35px;
   outline: none;
   background-color: #438bbd;
   border: none;
@@ -35,6 +40,7 @@ a {
 }
 
 input {
+  margin-top: 35px;
   font-size: 1em;
   width: 100%;
   background-color: #edeff0;
@@ -43,6 +49,11 @@ input {
   border-right: none;
   border-radius: 0.35em 0 0 0.35em;
   outline: none;
+}
+
+nav.main-nav {
+  margin-top: -20px;
+  margin-bottom: -20px;
 }
 
 .main-nav li {
@@ -58,7 +69,11 @@ input {
   color: #fff;
 }
 
-.main-nav .active,
+.main-nav .active {
+  background-color: #26942e;
+}
+
+
 .main-nav a:hover,
 .search-form button:hover {
   background-color: #275270;
@@ -67,14 +82,14 @@ input {
 .photo-container ul {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   -ms-align-items: flex-start;
   align-items: flex-start;
 }
 
 .photo-container ul li {
-  width: 220px;
-  height: 165px;
+  width: 275px;
+  height: 180px;
   overflow: hidden;
   margin-bottom: 15px;
 }
@@ -87,6 +102,17 @@ input {
 
 .photo-container li:hover img {
   transform: scale(1.65);
+}
+
+.photo-container li:hover img.ocean {
+  transform: none;
+}
+
+.photo-container li img.ocean {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }
 
 .photo-container .not-found {
@@ -104,12 +130,12 @@ input {
 }
 
 @media only screen and (min-width: 768px)  {
-  body {
-    padding-top: 4em;
-  }
+  /* body {
+
+  } */
 
   .container {
-    max-width: 960px;
+    max-width: 1280px;
     margin: auto;
   }
 

@@ -53,7 +53,7 @@ class App extends Component {
       searchLoad: false
     })
     if(this.state.search.length > 0) {
-      console.log('Photos Available')
+      //console.log('Photos Available')
       return 
     }
     else {

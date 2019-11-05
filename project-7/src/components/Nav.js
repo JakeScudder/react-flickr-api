@@ -1,14 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 //Stateless
 
 const Nav = () => (
     
   <nav className="main-nav">
     <ul>
-      <li><Link to='/birds'>Birds</Link></li>
-      <li><Link to='/bees'>Bees</Link></li>
-      <li><Link to='/butterflies'>Butterflies</Link></li>
+      <li><NavLink to='/birds'>Birds</NavLink></li>
+      <li><NavLink to='/bees'>Bees</NavLink></li>
+      <li><NavLink to='/butterflies'>Butterflies</NavLink></li>
     </ul>
   </nav>
 );
