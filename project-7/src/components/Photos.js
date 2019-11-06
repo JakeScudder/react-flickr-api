@@ -9,7 +9,7 @@ const Photos = ({photo}) => {
   return (
     <li>
       {/* <a href={link} > */}
-      <img srcset={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_z.jpg`}
+      <img srcSet={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_z.jpg`}
       src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_m.jpg`} alt={photo.title} />
       {/* </a> */}
     </li>
