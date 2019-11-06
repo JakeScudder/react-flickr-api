@@ -24,13 +24,13 @@ class App extends Component {
       butterflies: [],
       birds: [],
       search:[],
-      loading: true,
-      searchLoad: true
+      loading: true
     };
   }
 
   //Initial get request for home page and 3 nav links
   componentDidMount() {
+
     Promise.all([axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=buttercups&per_page=24&extras=url_o&format=json&nojsoncallback=1`), axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=butterflies&per_page=24&format=json&nojsoncallback=1`), axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=bees&per_page=24&format=json&nojsoncallback=1`), axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=birds&per_page=24&format=json&nojsoncallback=1`)])
     .then(([res1, res2, res3, res4]) => {
       this.setState({
@@ -46,26 +46,23 @@ class App extends Component {
     })
   }
 
-  //Handles search by setting search array to search state
-  handleSearch = (searchArray) => {
-    this.setState({
-      search: searchArray,
-      searchLoad: false
-    })
-    if(this.state.search.length > 0) {
-      //console.log('Photos Available')
-      return 
-    }
-    else {
-      console.log('Not Found')
-    }
-  }
+  //Handles the search request from the search form
 
-  //resets Search State
-  resetState = () => {
+  handleSearchRequest = (input) => {
     this.setState({
-      searchLoad: true,
+      loading: true
     })
+    axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${input}&per_page=24&format=json&nojsoncallback=1`)
+  .then(response => {
+    console.log(response)
+    this.setState({
+      search: response.data.photos.photo,
+      loading: false
+    })
+  })
+  .catch(error => {
+    console.log("We couldn't find what you searched for.", error)
+  })
   }
 
   //Renders the main page
@@ -74,22 +71,22 @@ class App extends Component {
     <BrowserRouter>
       <div className="container">
         <SearchForm 
-          addSearchState={this.handleSearch}
-          resetSearchState={this.resetState}
+          handleSearch={this.handleSearchRequest}
         />
         <Nav />
-
+          {/* Loading State indicator on intial page load
+          { */}
+          { (this.state.loading) 
+           ?  <p className="loading" >Loading...</p>
+           :  null
+          }
         <Switch>
-          {/* Loading State indicator on intial page load*/}
-          {
-          (this.state.loading)
-          ? <p>Loading...</p>
-          : 
+          
           <Route 
             exact path="/" 
-            render={(props) => <PhotoContainer {...props} data={this.state.photos} /> }
+            render={(props) => <PhotoContainer {...props} data={this.state.photos} loading={this.state.loading} /> }
           />
-          }
+          
           <Route 
             exact path="/butterflies" 
             render={(props) => <PhotoContainer {...props} data={this.state.butterflies} /> }
@@ -103,16 +100,10 @@ class App extends Component {
             render={(props) => <PhotoContainer {...props} data={this.state.birds} /> }
           />
           
-          {/* Loading State indicator so Not Found won't display unless search has been returned */}
-          {
-          (this.state.searchLoad)
-          ? <p>Loading...</p>
-          : 
           <Route 
             exact path="/search/:input" 
-            render={(props) => <PhotoContainer {...props} data={this.state.search} /> }
+            render={(props) => <PhotoContainer {...props} data={this.state.search} loading={this.state.loading} /> }
             />
-          }
           <Route component={ErrorPage}/>
           
         </Switch>

@@ -4,6 +4,11 @@ body {
   color: #3f4850;
 }
 
+p.loading {
+  font-size: 26px;
+  margin-top: 60px;
+}
+
 div#root {
   background-color: #3b7b20c7
 }

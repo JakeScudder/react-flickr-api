@@ -7,7 +7,7 @@ class PhotoContainer extends Component {
 
   render() {
     //If no results, render NotFound Component
-    if (this.props.data.length === 0) {
+    if (this.props.data.length === 0 && this.props.loading === false) {
       return (
         <div className="photo-container">
           <h2>Results</h2>

@@ -6,6 +6,7 @@ const Nav = () => (
     
   <nav className="main-nav">
     <ul>
+       {/* NavLink's for active styling */}
       <li><NavLink to='/birds'>Birds</NavLink></li>
       <li><NavLink to='/bees'>Bees</NavLink></li>
       <li><NavLink to='/butterflies'>Butterflies</NavLink></li>

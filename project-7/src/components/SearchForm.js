@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import apiKey from '../config';
+// import axios from 'axios';
+// import apiKey from '../config';
 import { withRouter } from "react-router";
 //import { Link } from 'react-router-dom';
 
@@ -8,35 +8,17 @@ import { withRouter } from "react-router";
 
 class SearchForm extends Component {
 
-	state= {
-		search: []
-	}
-	//Handles search form requests
+	
+	//Handles the form submission, passes info to handleSearch props
 	handleSubmit = (e) => {
 		e.preventDefault();
 		let input = this.search.value;
 		console.log(this.search.value)
 		let searchUrl = `/search/${input}`;
 		this.props.history.push(searchUrl);
-		this.props.resetSearchState();
 		e.currentTarget.reset();
-		// setTimeout(() => {
-		// 	input = "";
-		// }, 1000)
 
-		axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${input}&per_page=24&format=json&nojsoncallback=1`)
-		.then(response => {
-			console.log(response)
-			this.setState({
-        search: response.data.photos.photo
-			})
-		})
-    .then(() => {
-			this.props.addSearchState(this.state.search)
-		})
-		.catch(error => {
-			console.log("We couldn't find what you searched for.", error)
-		})
+		this.props.handleSearch(input);
 
 	}
 
