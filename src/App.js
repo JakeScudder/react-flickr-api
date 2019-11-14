@@ -11,7 +11,7 @@ import {
 import SearchForm from './components/SearchForm';
 import Nav from './components/Nav';
 import PhotoContainer from './components/PhotoContainer';
-import ErrorPage from './components/ErrorPage';
+import PageNotFound from './components/PageNotFound';
 
 class App extends Component {
 
@@ -103,7 +103,7 @@ class App extends Component {
             exact path="/search/:input" 
             render={(props) => <PhotoContainer {...props} data={this.state.search} loading={this.state.loading} /> }
             />
-          <Route component={ErrorPage}/>
+          <Route component={PageNotFound}/>
           
         </Switch>
         
