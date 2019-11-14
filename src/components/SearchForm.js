@@ -8,7 +8,6 @@ import { withRouter } from "react-router";
 
 class SearchForm extends Component {
 
-	
 	//Handles the form submission, passes info to handleSearch props
 	handleSubmit = (e) => {
 		e.preventDefault();
@@ -17,7 +16,6 @@ class SearchForm extends Component {
 		let searchUrl = `/search/${input}`;
 		this.props.history.push(searchUrl);
 		e.currentTarget.reset();
-
 		this.props.handleSearch(input);
 
 	}
