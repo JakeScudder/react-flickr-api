@@ -6,4 +6,5 @@
  
  
  const apiKey = '<Your API Key>';
+ 
  export default apiKey;
