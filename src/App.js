@@ -27,19 +27,22 @@ class App extends Component {
       loading: true
     };
   }
-
-  //Initial get request for home page and 3 nav links
+  
   componentDidMount() {
+    this.handleFetch();
+  }
 
-    Promise.all([axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=buttercups&per_page=24&extras=url_o&format=json&nojsoncallback=1`), axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=butterflies&per_page=24&format=json&nojsoncallback=1`), axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=bees&per_page=24&format=json&nojsoncallback=1`), axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=birds&per_page=24&format=json&nojsoncallback=1`)])
-    .then(([res1, res2, res3, res4]) => {
+  //Handles fetch requests
+  handleFetch = (query="buttercups") => {
+    this.setState({
+      loading: true
+    })
+    axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&extras=url_o&format=json&nojsoncallback=1`)
+    .then(res1 => {
       this.setState({
-        photos: res1.data.photos.photo,
-        butterflies: res2.data.photos.photo,
-        bees: res3.data.photos.photo,
-        birds: res4.data.photos.photo,
+        photos:res1.data.photos.photo,
         loading: false
-      });
+      })
     })
     .catch(error => {
       console.log('Error fetching and parsing data', error)
@@ -47,7 +50,6 @@ class App extends Component {
   }
 
   //Handles the search request from the search form
-
   handleSearchRequest = (input) => {
     this.setState({
       loading: true
@@ -64,7 +66,7 @@ class App extends Component {
   })
   }
 
-  //Renders the main page
+  //Renders the app's main page
   render() {
     return(
     <BrowserRouter>
@@ -88,7 +90,8 @@ class App extends Component {
           
           <Route 
             exact path="/butterflies" 
-            render={(props) => <PhotoContainer {...props} data={this.state.butterflies} /> }
+            fetchNav={this.handleFetch}
+            render={(props) => <PhotoContainer {...props} data={this.state.photos} /> }
           />
           <Route 
             exact path="/bees" 
@@ -114,3 +117,20 @@ class App extends Component {
 }
 
 export default App;
+
+// //Initial get request for home page and 3 nav links
+// componentDidMount() {
+//   Promise.all([axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=buttercups&per_page=24&extras=url_o&format=json&nojsoncallback=1`), axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=butterflies&per_page=24&format=json&nojsoncallback=1`), axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=bees&per_page=24&format=json&nojsoncallback=1`), axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=birds&per_page=24&format=json&nojsoncallback=1`)])
+//   .then(([res1, res2, res3, res4]) => {
+//     this.setState({
+//       photos: res1.data.photos.photo,
+//       butterflies: res2.data.photos.photo,
+//       bees: res3.data.photos.photo,
+//       birds: res4.data.photos.photo,
+//       loading: false
+//     });
+//   })
+//   .catch(error => {
+//     console.log('Error fetching and parsing data', error)
+//   })
+// }

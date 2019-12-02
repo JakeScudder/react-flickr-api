@@ -11,8 +11,8 @@ const SearchForm = (props) => {
 		e.preventDefault();
 		let searchUrl = `/search/${search}`;
 		props.history.push(searchUrl);
-		e.currentTarget.reset();
 		props.handleSearch(search);
+		setSearch("");
 		}
 	const handleChange = e => {
 		setSearch(e.target.value);
@@ -37,8 +37,5 @@ const SearchForm = (props) => {
 	)
 };
   
-
 const SearchFormWithRouter = withRouter(SearchForm);
-
 export default SearchFormWithRouter;
-
