@@ -3,6 +3,7 @@ import React from 'react';
 //Stateless
 
 const PageNotFound = ({ location }) => {
+
   return(
   <div className="photo-container">
     <li className="not-found">

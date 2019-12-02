@@ -1,9 +1,6 @@
 import React from 'react';
 
-//Stateless
-
 const Photos = ({photo}) => {
-  
   //Include href form modal in future
   // const link = `${photo.url_o}`
   return (
