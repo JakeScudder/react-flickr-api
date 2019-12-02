@@ -33,7 +33,7 @@ class App extends Component {
   }
 
   //Handles fetch requests
-  handleFetch = (query="buttercups") => {
+  handleFetch = (query) => {
     this.setState({
       loading: true
     })
@@ -74,7 +74,7 @@ class App extends Component {
         <SearchForm 
           handleSearch={this.handleSearchRequest}
         />
-        <Nav />
+        <Nav fetchNav={this.handleFetch}/>
           {/* Loading State indicator on intial page load
           { */}
           { (this.state.loading) 
@@ -90,16 +90,15 @@ class App extends Component {
           
           <Route 
             exact path="/butterflies" 
-            fetchNav={this.handleFetch}
             render={(props) => <PhotoContainer {...props} data={this.state.photos} /> }
           />
           <Route 
             exact path="/bees" 
-            render={(props) => <PhotoContainer {...props} data={this.state.bees} /> }
+            render={(props) => <PhotoContainer {...props} data={this.state.photos} /> }
           />
           <Route 
             exact path="/birds" 
-            render={(props) => <PhotoContainer {...props} data={this.state.birds} /> }
+            render={(props) => <PhotoContainer {...props} data={this.state.photos} /> }
           />
           
           <Route 
