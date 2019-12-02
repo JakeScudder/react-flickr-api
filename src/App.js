@@ -20,9 +20,6 @@ class App extends Component {
     super();
     this.state = {
       photos: [],
-      bees: [],
-      butterflies: [],
-      birds: [],
       search:[],
       loading: true
     };
@@ -33,7 +30,7 @@ class App extends Component {
   }
 
   //Handles fetch requests
-  handleFetch = (query) => {
+  handleFetch = (query = 'buttercups') => {
     this.setState({
       loading: true
     })

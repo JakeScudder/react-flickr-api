@@ -4,38 +4,24 @@ import { NavLink } from 'react-router-dom';
 
 const Nav = (props) => {
   
-  const [search, setSearch] = useState("")
+  const [link, setLink] = useState("")
 
-  const fetch = (state) => {
-    props.fetchNav(state)
+  const fetch = (text) => {
+    props.fetchNav(text)
   }
 
   const setState = e => {
-    setSearch(e.target.text);
-    fetch(search)
+    setLink(e.target.text);
+    fetch(link)
   }
 
   return (
   <nav className="main-nav">
     <ul>
        {/* NavLink's for active styling */}
-      <li><NavLink to='/birds'>Birds</NavLink></li>
-      <li>
-        <NavLink 
-        to='/bees'
-        text='bees'
-        onChange={setState}
-        >Bees
-        </NavLink>
-      </li>
-      <li>
-        <NavLink 
-        to='/butterflies'
-        text='butterflies'
-        onChange={setState}
-        >Butterflies
-        </NavLink>
-      </li>
+      <li><NavLink to='/birds' text='birds' onClick={setState}>Birds</NavLink></li>
+      <li><NavLink to='/bees' text='bees' onClick={setState} >Bees </NavLink> </li>
+      <li> <NavLink to='/butterflies' text='butterflies' onClick={setState} >Butterflies </NavLink> </li>
     </ul>
   </nav>
   )
