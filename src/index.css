@@ -1,7 +1,17 @@
+@import url("https://fonts.googleapis.com/css?family=Arvo&display=swap");
+
 body {
   text-align: center;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Arvo', serif;
   color: #3f4850;
+}
+
+.header{
+  float: left;
+  font-family: 'Arvo', serif;
+  margin-left: 25px;
+  border: 10px solid green;
+  border-radius: 10px;
 }
 
 p.loading {
@@ -28,21 +38,36 @@ a {
   text-decoration: none;
 }
 
+.search-container {
+  margin: auto;
+  width:75%;
+  display: flex;
+  align-items: center;
+}
+
 .search-form {
   max-width: 460px;
-  display: flex;
   margin: 0 auto 32px;
+}
+
+.searchDiv {
+  display:inline-block;
+  vertical-align: middle
 }
 
 .search-form button {
   margin-top: 35px;
+  padding: 11px 24px;
   outline: none;
   background-color: #438bbd;
   border: none;
-  padding: 0px 15px;
   border-radius: 0 0.35em 0.35em 0;
   cursor: pointer;
+  vertical-align: middle;
+  border-radius: 0px 10px 10px 0px;
 }
+
+
 
 input {
   margin-top: 35px;
@@ -142,6 +167,7 @@ nav.main-nav {
   .container {
     max-width: 1280px;
     margin: auto;
+    width:75%;
   }
 
   .main-nav ul {

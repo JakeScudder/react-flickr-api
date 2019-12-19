@@ -4,19 +4,14 @@ import { NavLink } from 'react-router-dom';
 
 const Nav = (props) => {
   
-  const fetch = (text) => {
-    props.fetchNav(text)
-  }
-
   const setLink = e => {
     let link = e.target.name;
-    fetch(link)
+    props.fetchNav(link)
   }
 
   return (
   <nav className="main-nav">
     <ul>
-       {/* NavLink's for active styling */}
        <li><NavLink exact to='/' name='buttercups' onClick={setLink}>Home</NavLink></li>
       <li><NavLink to='/birds' name='birds' onClick={setLink}>Birds</NavLink></li>
       <li><NavLink to='/bees' name='bees' onClick={setLink} >Bees </NavLink> </li>

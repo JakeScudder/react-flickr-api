@@ -7,11 +7,13 @@ import {
   Switch
 } from 'react-router-dom';
 
+
 //App components
 import SearchForm from './components/SearchForm';
 import Nav from './components/Nav';
 import PhotoContainer from './components/PhotoContainer';
 import PageNotFound from './components/PageNotFound';
+import Header from './components/Header';
 
 class App extends Component {
   //Set state for fetch requests and loading indicators.
@@ -49,10 +51,13 @@ class App extends Component {
   render() {
     return(
     <BrowserRouter>
+    <Header />
       <div className="container">
-        <SearchForm 
-          handleSearch={this.handleFetch}
-        />
+        <div className="search-container">
+          <SearchForm 
+            handleSearch={this.handleFetch}
+          />
+        </div>
         <Nav fetchNav={this.handleFetch}/>
           {/* Loading State indicator */}
           { (this.state.loading) 
