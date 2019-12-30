@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Flickr-Photo-App/static/css/main.9c29e6a1.chunk.css",
+    "main.js": "/Flickr-Photo-App/static/js/main.95a53dd8.chunk.js",
+    "main.js.map": "/Flickr-Photo-App/static/js/main.95a53dd8.chunk.js.map",
+    "runtime-main.js": "/Flickr-Photo-App/static/js/runtime-main.b43e738b.js",
+    "runtime-main.js.map": "/Flickr-Photo-App/static/js/runtime-main.b43e738b.js.map",
+    "static/js/2.35f375d6.chunk.js": "/Flickr-Photo-App/static/js/2.35f375d6.chunk.js",
+    "static/js/2.35f375d6.chunk.js.map": "/Flickr-Photo-App/static/js/2.35f375d6.chunk.js.map",
+    "index.html": "/Flickr-Photo-App/index.html",
+    "precache-manifest.bdfae0c62e1f21a176057c0b331bd813.js": "/Flickr-Photo-App/precache-manifest.bdfae0c62e1f21a176057c0b331bd813.js",
+    "service-worker.js": "/Flickr-Photo-App/service-worker.js",
+    "static/css/main.9c29e6a1.chunk.css.map": "/Flickr-Photo-App/static/css/main.9c29e6a1.chunk.css.map",
+    "static/js/2.35f375d6.chunk.js.LICENSE": "/Flickr-Photo-App/static/js/2.35f375d6.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b43e738b.js",
+    "static/js/2.35f375d6.chunk.js",
+    "static/css/main.9c29e6a1.chunk.css",
+    "static/js/main.95a53dd8.chunk.js"
+  ]
+}
