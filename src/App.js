@@ -50,7 +50,7 @@ class App extends Component {
   //Renders the app's main page
   render() {
     return(
-    <HashRouter basename="/Techdegree-Project-7">
+    <HashRouter>
     <Header />
       <div className="container">
         <div className="search-container">
