@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import apiKey from './config';
 import {
-  BrowserRouter,
+  HashRouter,
   Route,
   Switch
 } from 'react-router-dom';
@@ -50,7 +50,7 @@ class App extends Component {
   //Renders the app's main page
   render() {
     return(
-    <BrowserRouter>
+    <HashRouter basename="/Techdegree-Project-7">
     <Header />
       <div className="container">
         <div className="search-container">
@@ -91,7 +91,7 @@ class App extends Component {
         </Switch>
         
       </div>
-    </BrowserRouter>
+    </HashRouter>
     )
   }
 }
