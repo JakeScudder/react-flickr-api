@@ -13,7 +13,8 @@ const SearchForm = (props) => {
 		props.history.push(searchUrl);
 		props.handleSearch(search);
 		setSearch("");
-		}
+	}
+	
 	const handleChange = e => {
 		setSearch(e.target.value);
 	}

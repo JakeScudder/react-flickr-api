@@ -4,10 +4,12 @@ body {
   text-align: center;
   font-family: 'Arvo', serif;
   color: #3f4850;
+  margin: 0px;
 }
 
 .header{
   float: left;
+  position: absolute;
   font-family: 'Arvo', serif;
   margin-left: 25px;
   border: 10px solid green;
@@ -20,7 +22,8 @@ p.loading {
 }
 
 div#root {
-  background-color: #3b7b20c7
+  background-color: #3b7b20c7;
+  border: solid forestgreen 15px;
 }
 
 h2 {
@@ -149,21 +152,8 @@ nav.main-nav {
   width: 100%;
 }
 
-@media only screen and (max-width: 767px)  {
-  body {
-    padding-top: 2em;
-  }
-
-  .photo-container li {
-    margin: auto;
-  }
-}
-
-@media only screen and (min-width: 768px)  {
-  /* body {
-
-  } */
-
+@media only screen and (min-width: 1000px)  {
+  
   .container {
     max-width: 1280px;
     margin: auto;
@@ -178,5 +168,18 @@ nav.main-nav {
   .main-nav li {
     margin: 10px;
     width: 100px;
+  }
+}
+
+@media only screen and (max-width: 999px)  {
+  .header {
+    position: relative;
+    margin: auto;
+    width: 50%;
+    float: none;
+  }
+
+  .photo-container li {
+    margin: auto;
   }
 }
