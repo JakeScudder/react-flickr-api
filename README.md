@@ -9,7 +9,7 @@
 This project was built using create-react-app.  It uses Flickr's API to fetch a gallery of photos.  It has error handling and has a built in search function.  
 
 ### Technologies
-JavaScript, React, HTML, CSS, API Requests
+JavaScript, React, HTML, CSS, API Requests w/ Axios
 
 ### Check it out
 https://jakescudder.github.io/react-flickr-api
