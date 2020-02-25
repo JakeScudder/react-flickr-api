@@ -6,10 +6,10 @@
 </div>
 
 ### Description
-This project was built using Express and Sequelize to simulate the management of a database for a Library. It was set-up using Sequelize CLI and uses Sequelize model validation. 
+This project was built using create-react-app.  It uses Flickr's API to fetch a gallery of photos.  It has error handling and has a built in search function.  
 
 ### Technologies
-JavaScript, Node.js, Express, Pug, Sequelize
+JavaScript, React, HTML, CSS, API Requests
 
 ### Check it out
 https://jakescudder.github.io/react-flickr-api
@@ -18,7 +18,7 @@ https://jakescudder.github.io/react-flickr-api
 
 After cloning this respository you can:
 
-If you want to run this program on your own computer you will need to apply for a Flickr API Key. Then you just need to create a config.js file in the src folder. Then insert the following into the file:
+In order to run this program on your own computer you will need to apply for a Flickr API Key. Then you just need to create a config.js file in the src folder. Then insert the following into the file:
 ```
  const apiKey = " Your API Key ";
  
