@@ -2,7 +2,7 @@ import React from 'react';
 
 const Header = () => {
   return (
-    <h1 class="header"> Flickr Photo App </h1>
+    <h1 className="header"> Flickr Photo App </h1>
   )
 }
 

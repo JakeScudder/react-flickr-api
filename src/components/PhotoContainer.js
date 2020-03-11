@@ -1,13 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Photos from './Photos';
 import NotFound from './NotFound';
 //Stateful
 
-const PhotoContainer = (props) => {
+class PhotoContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.setState({
+      query: ""
+    })
+  }
 
-  
+  componentDidMount() {
+    debugger
+    let query = this.props.match.params.input;
+    if (query) {
+      this.props.handleSearch(query);
+    }
+  }
+
+  render() {
     //If no results, render NotFound Component
-    if (props.data.length === 0 && props.loading === false) {
+    if (this.props.data.length === 0 && this.props.loading === false) {
       return (
         <div className="photo-container">
           <h2>Results</h2>
@@ -21,15 +35,15 @@ const PhotoContainer = (props) => {
       <div className="photo-container">
         <h2>Results</h2>
             <ul>
-              { props.data.map( photo=> {
+              { this.props.data.map( photo=> {
               return <Photos key={photo.id} photo={photo}/>
               })}
             </ul>
       </div>        
-     );
+    );
     }  
-    
   }
+}
 
 export default PhotoContainer;
 

@@ -17,8 +17,8 @@ import Header from './components/Header';
 
 class App extends Component {
   //Set state for fetch requests and loading indicators.
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       photos: [],
       loading: true
@@ -84,7 +84,7 @@ class App extends Component {
           
           <Route 
             exact path="/search/:input" 
-            render={(props) => <PhotoContainer {...props} data={this.state.photos} loading={this.state.loading} /> }
+            render={(props) => <PhotoContainer {...props} data={this.state.photos} handleSearch={this.handleFetch} loading={this.state.loading} /> }
             />
           <Route component={PageNotFound}/>
           
