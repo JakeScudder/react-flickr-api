@@ -12,7 +12,6 @@ class PhotoContainer extends Component {
   }
 
   componentDidMount() {
-    debugger
     let query = this.props.match.params.input;
     if (query) {
       this.props.handleSearch(query);
