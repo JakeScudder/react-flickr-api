@@ -15,11 +15,14 @@ import PhotoContainer from './components/PhotoContainer';
 import PageNotFound from './components/PageNotFound';
 import Header from './components/Header';
 
+import Cookies from 'js-cookie';
+
 class App extends Component {
   //Set state for fetch requests and loading indicators.
   constructor(props) {
     super(props);
     this.state = {
+      searchQuery: Cookies.getJSON('searchQuery') || "buttercups",
       photos: [],
       loading: true
     };
@@ -27,11 +30,13 @@ class App extends Component {
   
   //After components
   componentDidMount() {
-    this.handleFetch();
+    let query = this.state.searchQuery
+    console.log(query)
+    this.handleFetch(query);
   }
 
   //Handles all fetch requests for: home route, navigation, and search forms
-  handleFetch = (query = 'buttercups') => {
+  handleFetch = (query) => {
     this.setState({
       loading: true
     })

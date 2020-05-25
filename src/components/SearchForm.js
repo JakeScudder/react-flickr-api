@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { withRouter } from "react-router";
+import Cookies from 'js-cookie';
 
 const SearchForm = (props) => {
 	
@@ -13,6 +14,7 @@ const SearchForm = (props) => {
 		let searchUrl = `/search/${search}`;
 		props.history.push(searchUrl);
 		props.handleSearch(search);
+		Cookies.set('searchQuery', JSON.stringify(search))
 		setSearch("");
 	}
 	
