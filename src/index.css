@@ -2,15 +2,15 @@
 
 body {
   text-align: center;
-  font-family: 'Arvo', serif;
+  font-family: "Arvo", serif;
   color: #3f4850;
   margin: 0px;
 }
 
-.header{
+.header {
   float: left;
   position: absolute;
-  font-family: 'Arvo', serif;
+  font-family: "Arvo", serif;
   margin-left: 25px;
   border: 10px solid green;
   border-radius: 10px;
@@ -43,7 +43,7 @@ a {
 
 .search-container {
   margin: auto;
-  width:75%;
+  width: 75%;
   display: flex;
   align-items: center;
 }
@@ -54,8 +54,8 @@ a {
 }
 
 .searchDiv {
-  display:inline-block;
-  vertical-align: middle
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .search-form button {
@@ -69,8 +69,6 @@ a {
   vertical-align: middle;
   border-radius: 0px 10px 10px 0px;
 }
-
-
 
 input {
   margin-top: 35px;
@@ -105,7 +103,6 @@ nav.main-nav {
 .main-nav .active {
   background-color: #26942e;
 }
-
 
 .main-nav a:hover,
 .search-form button:hover {
@@ -152,34 +149,40 @@ nav.main-nav {
   width: 100%;
 }
 
-@media only screen and (min-width: 1000px)  {
-  
+@media only screen and (min-width: 1000px) {
   .container {
     max-width: 1280px;
     margin: auto;
-    width:75%;
+    width: 75%;
   }
 
   .main-nav ul {
     display: flex;
     justify-content: center;
   }
-  
+
   .main-nav li {
     margin: 10px;
     width: 100px;
   }
 }
 
-@media only screen and (max-width: 999px)  {
+@media only screen and (max-width: 999px) {
   .header {
     position: relative;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
     width: 50%;
     float: none;
   }
 
   .photo-container li {
     margin: auto;
+  }
+
+  .main-nav li {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
